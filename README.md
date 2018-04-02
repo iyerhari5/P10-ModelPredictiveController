@@ -30,8 +30,8 @@ The motion model used is shown below:
 ![alt text][image1]
 
 # Timestep Length and Elapsed Duration (N & dt)
-I experimented with various values of N & dt pairs such as N-10, dt = 0.1, N-20, dt=0.1 etc. However the final values that showed reasonable 
-perfomance was N = 12 and dt = 0.05 which means the MPC is predicting 600 ms into the future.
+I experimented with various values of N & dt pairs such as (N=10, dt = 0.1), (N=20, dt=0.1) etc. However the final values that showed reasonable 
+performance was N = 12 and dt = 0.05. This means the MPC is predicting 600 ms into the future.
 
 
 # Polynomial Fitting and MPC Preprocessing
@@ -42,7 +42,7 @@ to be at (px,py,psi) = (0,0,0).
 
 The main challenge in this project was to allow for 100ms in latency from the current time instant to when the actuator inputs would be effective.
 The approach used to handle this was to do the trajectory prediction into the future, and then apply the actuator values from the time point after
-the latency period. In out case N=12 and dt = 0.05. So in order to account for 0.1 second latency, we use the 3rd set of actuator values returned from
+the latency period. In our case N=12 and dt = 0.05. So in order to account for 0.1 second latency, we use the 3rd set of actuator values returned from
 the optimizer to actuate the car.  In order for this to work, we also have to constraint the actuator values to the current actuator values for 
 the period of the latency. See MPC.cpp lines 13-16 ,200-205 and 215-220. 
 
