@@ -15,7 +15,7 @@ Tips for setting up your environment can be found [here](https://classroom.udaci
 
 
 [image1]: ./Images/mpc-model.png
-[image1]: ./Images/Run3.gif
+[image2]: ./Images/Run3.gif
 
 # Model Predictive Controller
 Model Predictive Controller (MPC) frames the task of following a trajectory as an optimization problem. MPC simulates different actuator inputs and 
@@ -44,7 +44,7 @@ The main challenge in this project was to allow for 100ms in latency from the cu
 The approach used to handle this was to do the trajectory prediction into the future, and then apply the actuator values from the time point after
 the latency period. In out case N=12 and dt = 0.05. So in order to account for 0.1 second latency, we use the 3rd set of actuator values returned from
 the optimizer to actuate the car.  In order for this to work, we also have to constraint the actuator values to the current actuator values for 
-the period of the latency. See MPC.cpp lines 13-16 ,229-234 and 244-250. 
+the period of the latency. See MPC.cpp lines 13-16 ,200-205 and 215-220. 
 
 
 # Results
